@@ -1,4 +1,4 @@
-# A simple chat apllication using reactJs
+# A simple chat application using reactJs
 
 
 
