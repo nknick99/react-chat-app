@@ -6,20 +6,22 @@ const LoginForm = () => {
     const [password, setpassword] = useState('')
     const [error, setError] = useState('')
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         const authObject = { 'Project-ID' : "dd3f0a8e-df89-469d-88b7-b7dc766763e9", 'User-Name' : username, 'User-Secret' : password  }
 
 
         try {
-            axios.get('https://api.chatengine.io/chats', { headers: authObject })
+            await axios.get('https://api.chatengine.io/chats', { headers: authObject })
 
             localStorage.setItem('username', username)
             localStorage.setItem('password', password)
 
+            setError('')
+
             window.location.reload()
-        } catch (error) {
+        } catch (err) {
             setError('Oops, incorrect Credentials')
             
         }
@@ -39,7 +41,7 @@ const LoginForm = () => {
                         </button>
 
                     </div>
-                    <h2 className="error">{error}</h2>
+                    <h2 className="error"> {error}</h2>
                 </form>
             </div>
         </div>
